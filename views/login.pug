@@ -1,0 +1,71 @@
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Ultimate Blog App
+  link(rel='stylesheet' href='css/bootstrap/bootstrap.css')
+  link(rel='stylesheet' href='css/style.css')
+nav.navbar.navbar-expand-lg.navbar-light(style='background-color: teal')
+  a.navbar-brand(href='bloggerDash') Ultimate Blog
+  button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
+    span.navbar-toggler-icon
+  #navbarSupportedContent.collapse.navbar-collapse
+    ul.navbar-nav.mr-auto
+      li.nav-item.active
+        a.nav-link(href='bloggerDash')
+          | Home 
+          span.sr-only (current)
+body
+  .container-fluid
+    .row
+      .col.loginForm
+        form.user-Login(action='/login' method='POST' name='login')
+          h4 Login
+          .form-group
+            input.form-control(type='text' placeholder='Username' name='username')
+            span#unameErr
+          .form-group
+            input.form-control(type='password' placeholder='Password' name='password')
+            span#pwdErr
+          button.btn.btn-primary(type='submit') Log In
+          a.signupBTN.btn.btn-primary(type='button' data-toggle='modal' data-target='#exampleModal' data-whatever='@getbootstrap') Sign Up
+          #exampleModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel')
+            .modal-dialog(role='document')
+              .modal-content
+                .modal-header
+                  h4#exampleModalLabel.modal-title Create your account
+                  button.close(type='button' data-dismiss='modal' aria-label='Close')
+                    span(aria-hidden='true') &times;
+                .modal-body.container
+                    form(name='signupForm' action = '/signup' method='POST')
+                      .form-row
+                        .form-group.col-md-4
+                          input.form-control(type='text' name='firstName' placeholder='First Name')
+                          span#fnameErr
+                        .form-group.col-md-4
+                          input.form-control(type='text' name='lastName' placeholder='Last Name')
+                          span#lnameErr
+                        .form-group.col-md-4
+                          input.form-control(type='text' name='username' placeholder='User Name')
+                          span#unameErr
+                      .form-row
+                        .form-group.col-md-6
+                          input.form-control(type='text' name='dob' placeholder='Date of Birth' onfocus="(this.type='date')")
+                          span#dobErr
+                        .form-group.col-md-6
+                          input.form-control(type='text' name='password' placeholder='Password')
+                          span#pwdErr
+                      .form-group
+                        .form-check-inline
+                          input.form-check-input(type='radio' name='gender' value='Male' checked='')
+                          label.form-check-label(for='genderM')  Male 
+                        .form-check-inline
+                          input.form-check-input(type='radio' name='gender' value='Female')
+                          label.form-check-label(for='genderF')  Female 
+                      a#registerBlogger(href='#')
+                        input.btn.btn-primary(type='button' value='Signup')
+        //- .col-4
+    //- .col-4
+script(src='js/jquery-3.5.1.slim.min.js')
+script(src='js/popper.min.js')
+script(src='js/bootstrap/bootstrap.js')
+script(src='js/validations.js')

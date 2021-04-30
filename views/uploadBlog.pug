@@ -1,0 +1,34 @@
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Ultimate Blog App
+  link(rel='stylesheet' href='css/bootstrap/bootstrap.css')
+  link(rel='stylesheet' href='css/style.css')
+nav.navbar.navbar-expand-lg.navbar-light(style='background-color: teal')
+  a.navbar-brand(href='blogUpload') Ultimate Blog
+  button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
+    span.navbar-toggler-icon
+  #navbarSupportedContent.collapse.navbar-collapse
+    ul.navbar-nav.mr-auto
+      li.nav-item.active
+        a.nav-link(href='blogUpload')
+          | Home 
+          span.sr-only (current)
+body
+  .container-fluid
+    .row
+      .col
+        form(action='/blogUpload' method='POST' name='uploadBlog')
+          .form-group.title
+            label Title
+            input.form-control(type='text' name='title')
+            span#titleErr
+          .form-group.content
+            label Content
+            textarea(name="content", cols="100", rows="20") 
+            span#contentErr
+          button.btn.btn-primary.uploadbtn(type='submit') Upload 
+script(src='js/jquery-3.5.1.slim.min.js')
+script(src='js/popper.min.js')
+script(src='js/bootstrap/bootstrap.js')
+script(src='js/validations.js')

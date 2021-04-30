@@ -1,0 +1,32 @@
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title My Blogs
+  link(rel='stylesheet' href='css/bootstrap/bootstrap.css')
+  link(rel='stylesheet' href='css/style.css')
+nav.navbar.navbar-expand-lg.navbar-light(style='background-color: teal;')
+  a.navbar-brand(href='bloggerDash') Ultimate Blog
+  button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
+    span.navbar-toggler-icon
+  #navbarSupportedContent.collapse.navbar-collapse
+    ul.navbar-nav.mr-auto
+      li.nav-item.active
+        a.nav-link(href='bloggerDash')
+          | Home 
+          span.sr-only (current)
+body
+  .row
+        if blogs.length
+        each blog in blogs
+            .card.productcard(style='width: 20rem;')
+              .card-body
+                  h6.card-title  #{blog.title}
+                  p.card-texts  #{blog.content}
+              a(href='/updateBlog/'+blog._id)
+                input.updateBTN(type="button" value="Update")
+              form(method="post" action='/deleteBlog')
+                  inputbtn.btn-dark.btn-block(type="hidden", placeholder="", name="id", value=blog._id)
+                  button.btn.btn-dark.btn-block(type="submit") Delete
+script(src='js/jquery-3.5.1.slim.min.js')
+script(src='js/popper.min.js')
+script(src='js/bootstrap/bootstrap.js')
